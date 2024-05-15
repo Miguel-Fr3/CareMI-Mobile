@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Text, TextInput, View, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { style  } from './style';
 
 const Login = () => { 
     const [cpf, setCpf] = useState("");
@@ -9,23 +10,28 @@ const Login = () => {
     const navigation = useNavigation();
     
     return ( 
-      <View>
-        <Text>CareMI</Text>
+      <View style={style.container}>
+        <Text style={style.title}>CareMI</Text>
 
-        <Text>CPF</Text>
-        <TextInput value={cpf} onChangeText={setCpf}/>
+        <View>
+          <Text style={style.text}>CPF</Text>
+          <TextInput value={cpf} onChangeText={setCpf} style={style.input}/>
+        </View>
 
-        <Text>Senha</Text>
-        <TextInput value={senha} onChangeText={setSenha} secureTextEntry={true}/>
+        <View>
+        <Text style={style.text}>Senha</Text>
+        <TextInput value={senha} onChangeText={setSenha} style={style.input} secureTextEntry={true}/>
 
-        <TouchableOpacity onPress={() => {
+        </View>
+        
+        <TouchableOpacity style={style.button} onPress={() => {
             navigation.navigate('Home')
         }}>
-            <Text>Entrar</Text>
+            <Text style={{ color: '#fbfbfb', fontSize: "1rem", fontWeight: '600'}}>Entrar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity>
-            <Text>Esqueci minha senha</Text>
+            <Text style={{ color: '#fbfbfb', fontSize: "0.9rem", fontWeight: '600', marginTop: '1rem', textDecorationLine: 'underline'}}>Esqueci minha senha</Text>
         </TouchableOpacity>
       </View>
     )

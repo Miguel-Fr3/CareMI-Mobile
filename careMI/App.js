@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './components/Login'
+import Login from './components/login/Login'
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <View>
-      <Login/>
-    </View>
+      <NavigationContainer>
+        <Login/>  
+      </NavigationContainer>
   );
 }
 

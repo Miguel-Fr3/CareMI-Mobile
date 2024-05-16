@@ -1,13 +1,12 @@
 import {useState} from 'react';
 import {Text, TextInput, View, TouchableOpacity} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { style  } from './style';
 
-const Login = () => { 
+const Login = ( props ) => { 
     const [cpf, setCpf] = useState("");
     const [senha, setSenha] = useState("");
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     
     return ( 
       <View style={style.container}>
@@ -25,7 +24,8 @@ const Login = () => {
         </View>
         
         <TouchableOpacity style={style.button} onPress={() => {
-            navigation.navigate('Home')
+            // navigation.navigate('Home')
+            props.logar();
         }}>
             <Text style={{ color: '#fbfbfb', fontSize: "1rem", fontWeight: '600'}}>Entrar</Text>
         </TouchableOpacity>

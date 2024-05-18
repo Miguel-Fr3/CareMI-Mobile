@@ -1,9 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
+import Login from './components/login/Login'
+import Menu from './components/menu/Menu';
+import { useState } from 'react'
+
 
 export default function App() {
+  const [logado, setLogado] = useState(false);
+
+  const logar = () => { 
+    setLogado(true);
+  }
+
   return (
-    <View></View>
+      <View style={{flex: 1}}>
+        <Text>Teste</Text>
+        { !logado ? <Login logar={logar}/> : <Menu/> } 
+      </View>
   );
-}
+} 
 

@@ -51,6 +51,7 @@ const Agendamento = ( ) => {
 
     cadastrarAtendimento(dadosFormulario)
     .then((responseData) => {
+
       navigation.navigate('Atendimento', { dados: dadosFormulario });
     })
     .catch((error) => {

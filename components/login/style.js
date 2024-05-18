@@ -7,6 +7,8 @@ export const style = StyleSheet.create({
         backgroundColor: '#008080',
         width: '100%',
         display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
     
     title: {

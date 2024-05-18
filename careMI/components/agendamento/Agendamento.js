@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import SucessoAgendamento from './SucessoAgendamento'
 
-
-
-const Agendamento = ( ) => {
+const Agendamento = () => {
   const [dias, setDias] = useState('');
   const [habito, setHabito] = useState('');
   const [tempoSono, setTempoSono] = useState('');
   const [hereditario, setHereditario] = useState('');
   const [descricao, setDescricao] = useState('');
   const [dataEnvio, setDataEnvio] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const navigation = useNavigation();
-
 
   const cadastrarAtendimento = async (dadosFormulario) => {
     try {
       const response = await fetch('http://localhost:8080/atendimentos', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(dadosFormulario)
+        body: JSON.stringify(dadosFormulario),
       });
 
       if (!response.ok) {
@@ -37,8 +36,6 @@ const Agendamento = ( ) => {
     }
   };
 
-
-
   const handleSubmit = () => {
     const dadosFormulario = {
       dias,
@@ -46,26 +43,20 @@ const Agendamento = ( ) => {
       tempoSono,
       hereditario,
       descricao,
-      dataEnvio
+      dataEnvio,
     };
 
     cadastrarAtendimento(dadosFormulario)
-    .then((responseData) => {
-    
-      navigation.navigate('SucessoAgendamento')
-
-      navigation.navigate('Atendimento', { dados: dadosFormulario });
-    })
-    .catch((error) => {
-
-      console.error('Erro ao cadastrar:', error);
-    });
-
-
+      .then((responseData) => {
+        setModalVisible(true);
+      })
+      .catch((error) => {
+        console.error('Erro ao cadastrar:', error);
+      });
   };
 
   return (
-    <View >
+    <View>
       <Text>Agendamento</Text>
 
       <Text>Quantos dias com os sintomas? *</Text>
@@ -111,10 +102,38 @@ const Agendamento = ( ) => {
       />
 
       <TouchableOpacity onPress={handleSubmit}>
-        <Text>ENVIAR</Text>
+        <Text >ENVIAR</Text>
       </TouchableOpacity>
+
+      <Modal
+        animationType="slide"
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View>
+          <SucessoAgendamento/>
+
+          <TouchableOpacity onPress={() => {
+            navigation.navigate("Home");
+            setModalVisible(false)
+          }}>
+            <Text>Voltar para a tela inicial</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => {
+            navigation.navigate("Atendimento");
+            setModalVisible(false)
+          }}>
+            <Text>Ir para seus agendamentos</Text>
+          </TouchableOpacity>
+
+        </View>
+      </Modal>
     </View>
   );
 };
+
 
 export default Agendamento;

@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Logoff from '../logoff/Logoff'
 import Home from '../home/Home';
 import Exames from '../exame/Exames';
-import Consulta from '../consulta/Consulta';
+import Atendimento from '../atendimento/Atendimento';
 import Agendamento from '../agendamento/Agendamento';
 
 
@@ -19,12 +19,8 @@ const Menu = () => {
       <Drawer.Navigator initialRouteName="Login">
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Exames" component={Exames}  />
-        {/* <Drawer.Screen name="Carteirinha" /> */}
         <Drawer.Screen name="Agendamento" component={Agendamento}/>
-        <Drawer.Screen name="Consulta" component={Consulta} />
-        {/* <Drawer.Screen name="Assistente"/>
-        <Drawer.Screen name="Configurações"/>
-        <Drawer.Screen name="Sobre"/> */}
+        <Drawer.Screen name="Atendimento" component={Atendimento} />
         
         <Drawer.Screen name="Logoff" component={Logoff}/>
       </Drawer.Navigator>

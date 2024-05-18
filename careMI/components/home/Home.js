@@ -1,33 +1,29 @@
-import {Text, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Home = () => { 
+const Home = () => {
+  const navigation = useNavigation();
 
-    return ( 
-      <View>
-        <Text>Olá, Bem Vindo!</Text>
+  return (
+    <View>
+      <Text>Olá, Bem Vindo!</Text>
 
-        <TouchableOpacity>
-            <Text>Acessar exames</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Exames')}>
+        <Text>Acessar exames</Text>
+      </TouchableOpacity>
 
-        
-        <TouchableOpacity>
-            <Text>Agendamento Online</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Agendamento')}>
+        <Text>Agendamento Online</Text>
+      </TouchableOpacity>
 
-        
-        <TouchableOpacity>
-            <Text>Consulta</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Atendimento')}>
+        <Text>Atendimento</Text>
+      </TouchableOpacity>
 
-        
-        <TouchableOpacity>
-            <Text>Assistente Virtual</Text>
-        </TouchableOpacity>
+      <Text>© 2024 CareMI, Inc.</Text>
+    </View>
+  );
+};
 
-       <Text>© 2024  CareMI, Inc.</Text>
-      </View>
-    )
-  }
-  
 export default Home;

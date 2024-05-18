@@ -13,7 +13,6 @@ export default function App() {
 
   return (
       <View style={{flex: 1}}>
-        <Text>Teste</Text>
         { !logado ? <Login logar={logar}/> : <Menu/> } 
       </View>
   );

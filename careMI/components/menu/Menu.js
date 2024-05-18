@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Logoff from '../logoff/Logoff'
@@ -22,7 +22,7 @@ const Menu = () => {
         <Drawer.Screen name="Agendamento" component={Agendamento}/>
         <Drawer.Screen name="Atendimento" component={Atendimento} />
         
-        <Drawer.Screen name="Logoff" component={Logoff}/>
+        <Drawer.Screen name="Sair" component={Logoff}/>
       </Drawer.Navigator>
     </NavigationContainer>
     </View>

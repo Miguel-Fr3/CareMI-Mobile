@@ -106,7 +106,6 @@ const Agendamento = () => {
       </TouchableOpacity>
 
       <Modal
-        animationType="slide"
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);

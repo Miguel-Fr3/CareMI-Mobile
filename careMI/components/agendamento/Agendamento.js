@@ -15,7 +15,7 @@ const Agendamento = ( ) => {
   const navigation = useNavigation();
 
 
-  const cadastrar = async (dadosFormulario) => {
+  const cadastrarAtendimento = async (dadosFormulario) => {
     try {
       const response = await fetch('http://localhost:8080/atendimentos', {
         method: 'POST',
@@ -49,11 +49,12 @@ const Agendamento = ( ) => {
       dataEnvio
     };
 
-    cadastrar(dadosFormulario)
+    cadastrarAtendimento(dadosFormulario)
     .then((responseData) => {
       navigation.navigate('Atendimento', { dados: dadosFormulario });
     })
     .catch((error) => {
+
       console.error('Erro ao cadastrar:', error);
     });
 

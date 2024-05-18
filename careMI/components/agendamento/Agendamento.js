@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import SucessoAgendamento from './SucessoAgendamento'
+import * as yup from 'yup';
+import SucessoAgendamento from './SucessoAgendamento';
+
+const schema = yup.object().shape({
+  dias: yup.string().required('campo obrigatório.'),
+  habito: yup.string().required('campo obrigatório.'),
+  tempoSono: yup.string().required('campo obrigatório.'),
+  hereditario: yup.string().required('campo obrigatório.'),
+  descricao: yup.string().required('campo obrigatório.'),
+  dataEnvio: yup.string().required('campo obrigatório.'),
+});
 
 const Agendamento = () => {
   const [dias, setDias] = useState('');
@@ -11,8 +21,33 @@ const Agendamento = () => {
   const [descricao, setDescricao] = useState('');
   const [dataEnvio, setDataEnvio] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [errors, setErrors] = useState({});
   const navigation = useNavigation();
+
+  const handleSubmit = async () => {
+    try {
+      await schema.validate({
+        dias,
+        habito,
+        tempoSono,
+        hereditario,
+        descricao,
+        dataEnvio,
+      }, { abortEarly: false });
+
+      // Se a validação passar, continua com o envio dos dados
+      const dadosFormulario = { dias, habito, tempoSono, hereditario, descricao, dataEnvio };
+      await cadastrarAtendimento(dadosFormulario);
+      setModalVisible(true);
+    } catch (error) {
+      // Se a validação falhar, exibe os erros
+      const validationErrors = {};
+      error.inner.forEach(err => {
+        validationErrors[err.path] = err.message;
+      });
+      setErrors(validationErrors);
+    }
+  };
 
   const cadastrarAtendimento = async (dadosFormulario) => {
     try {
@@ -36,32 +71,6 @@ const Agendamento = () => {
     }
   };
 
-  const handleSubmit = () => {
-
-  if (!dias || !habito || !tempoSono || !hereditario || !descricao || !dataEnvio) {
-    alert('todos os campos são obrigatórios');
-    return;
-  }
-
-
-    const dadosFormulario = {
-      dias,
-      habito,
-      tempoSono,
-      hereditario,
-      descricao,
-      dataEnvio,
-    };
-
-    cadastrarAtendimento(dadosFormulario)
-      .then((responseData) => {
-        setModalVisible(true);
-      })
-      .catch((error) => {
-        console.error('Erro ao cadastrar:', error);
-      });
-  };
-
   return (
     <View>
       <Text>Agendamento</Text>
@@ -72,6 +81,7 @@ const Agendamento = () => {
         value={dias}
         onChangeText={setDias}
       />
+      {errors.dias && <Text style={{color:'red'}} >{errors.dias}</Text>}
 
       <Text>Os sintomas são recorrentes? *</Text>
       <TextInput
@@ -79,6 +89,7 @@ const Agendamento = () => {
         value={habito}
         onChangeText={setHabito}
       />
+      {errors.habito && <Text style={{color:'red'}} >{errors.habito}</Text>}
 
       <Text>Quanto tempo de sono por dia? *</Text>
       <TextInput
@@ -86,6 +97,7 @@ const Agendamento = () => {
         value={tempoSono}
         onChangeText={setTempoSono}
       />
+      {errors.tempoSono && <Text style={{color:'red'}} >{errors.tempoSono}</Text>}
 
       <Text>Possui doenças hereditárias? *</Text>
       <TextInput
@@ -93,6 +105,7 @@ const Agendamento = () => {
         value={hereditario}
         onChangeText={setHereditario}
       />
+      {errors.hereditario && <Text style={{color:'red'}} >{errors.hereditario}</Text>}
 
       <Text>Descrição dos sintomas *</Text>
       <TextInput
@@ -100,6 +113,7 @@ const Agendamento = () => {
         value={descricao}
         onChangeText={setDescricao}
       />
+      {errors.descricao && <Text style={{color:'red'}} >{errors.descricao}</Text>}
 
       <Text>Data e hora do agendamento *</Text>
       <TextInput
@@ -107,9 +121,10 @@ const Agendamento = () => {
         value={dataEnvio}
         onChangeText={setDataEnvio}
       />
+      {errors.dataEnvio && <Text style={{color:'red'}} >{errors.dataEnvio}</Text>}
 
       <TouchableOpacity onPress={handleSubmit}>
-        <Text >ENVIAR</Text>
+        <Text>ENVIAR</Text>
       </TouchableOpacity>
 
       <Modal
@@ -132,7 +147,7 @@ const Agendamento = () => {
             navigation.navigate("Atendimento");
             setModalVisible(false)
           }}>
-            <Text>Ir para seus agendamentos</Text>
+            <Text>Ir para meus atendimentos</Text>
           </TouchableOpacity>
 
         </View>
@@ -140,6 +155,5 @@ const Agendamento = () => {
     </View>
   );
 };
-
 
 export default Agendamento;

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { style } from './style';
-import EsqueciSenha from '../senha/EsqueciSenha';
 
 const Login = (props) => {
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
-  const [mostrarEsqueciSenha, setMostrarEsqueciSenha] = useState(false);
 
   return (
     <View style={style.container}>

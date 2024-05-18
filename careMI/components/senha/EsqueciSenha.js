@@ -1,6 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
-import AtualizarSenha from './AtualizarSenha'
 
 const EsqueciSenha = () => {
   return (
@@ -12,11 +11,8 @@ const EsqueciSenha = () => {
       <Text>Informe o numero do CPF para criar uma nova senha</Text>
       <TextInput/>
 
-      <TouchableOpacity onPress={()=>{
-        <AtualizarSenha/>
-      }} >
+      <TouchableOpacity>
         <Text>Próximo</Text>
-
       </TouchableOpacity>
     </View>
   )

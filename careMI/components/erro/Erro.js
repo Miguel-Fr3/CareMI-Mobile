@@ -3,7 +3,7 @@ import React from 'react'
 import Error from '../../assets/images/error.png'
 
 
-const Error = () => {
+const Erro = () => {
 
     return(
         <View>
@@ -14,4 +14,4 @@ const Error = () => {
 
 }
 
-export default Error;
+export default Erro;

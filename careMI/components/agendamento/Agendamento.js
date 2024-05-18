@@ -37,6 +37,13 @@ const Agendamento = () => {
   };
 
   const handleSubmit = () => {
+
+  if (!dias || !habito || !tempoSono || !hereditario || !descricao || !dataEnvio) {
+    alert('todos os campos são obrigatórios');
+    return;
+  }
+
+
     const dadosFormulario = {
       dias,
       habito,

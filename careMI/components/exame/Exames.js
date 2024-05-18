@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import Erro from '../erro/Erro';
 
 const Exames = () => {
   const [exames, setExames] = useState([]);
+  const [erro, setErro] = useState(false);
 
   const mostrarExames = () => {
     fetch('http://localhost:8080/exames')
@@ -14,9 +16,11 @@ const Exames = () => {
       })
       .then(data => {
         setExames(data);
+        setErro(false);
       })
       .catch(error => {
         console.error('Erro ao obter lista de exames:', error);
+        setErro(true);
       });
   };
 
@@ -33,13 +37,16 @@ const Exames = () => {
   );
 
   return (
-    <View>
-      <Text>Exames</Text>
-      <FlatList
-        data={exames}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-      />
+    <View style={{ flex: 1 }}>
+      {erro ? (
+        <Erro/>
+      ) : (
+        <FlatList
+          data={exames}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+        />
+      )}
     </View>
   );
 };

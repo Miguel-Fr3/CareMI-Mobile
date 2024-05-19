@@ -72,7 +72,6 @@ export const style = StyleSheet.create({
         justifyContent: "center",
         borderRadius: '16px',
         marginTop: '3rem',
-        marginBottom: '8rem',
         
     },
     buttonA: {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import Erro from '../erro/Erro';
+import { style } from './style';
 
 const Exames = () => {
   const [exames, setExames] = useState([]);
@@ -29,7 +30,8 @@ const Exames = () => {
   }, []);
 
   const renderItem = ({ item }) => (
-    <View>
+    <View style={{ width: '20rem', borderWidth: 2,  borderColor: 'black', borderRadius: 0,  borderStyle: 'solid', backgroundColor:"#fbfbfb"}}>
+      <Text style={{fontWeight: '600'}}>Exame</Text>
       <Text>Data: {item.data}</Text>
       <Text>Hora: {item.hora}</Text>
       <Text>Descrição: {item.descricao}</Text>
@@ -37,7 +39,7 @@ const Exames = () => {
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor:"#fbfbfb"}}>
       {erro ? (
         <Erro/>
       ) : (

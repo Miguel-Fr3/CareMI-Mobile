@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, TouchableOpacity,Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 
-const Logoff = () => {
+const Logoff = ({ fazerLogoff }) => {
   return (
     <View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={fazerLogoff}>
         <Text>Sair</Text>
       </TouchableOpacity>
     </View>

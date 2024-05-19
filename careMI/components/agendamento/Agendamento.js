@@ -35,12 +35,12 @@ const Agendamento = () => {
         dataEnvio,
       }, { abortEarly: false });
 
-      // Se a validação passar, continua com o envio dos dados
+      
       const dadosFormulario = { dias, habito, tempoSono, hereditario, descricao, dataEnvio };
       await cadastrarAtendimento(dadosFormulario);
       setModalVisible(true);
     } catch (error) {
-      // Se a validação falhar, exibe os erros
+     
       const validationErrors = {};
       error.inner.forEach(err => {
         validationErrors[err.path] = err.message;

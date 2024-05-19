@@ -28,7 +28,7 @@ const EsqueciSenha = () => {
       })
       .catch(error => {
         console.error('Erro ao buscar lista de logins:', error);
-        setErroCPF('Ocorreu um erro ao buscar a lista de logins. Por favor, tente novamente mais tarde.');
+        setErroCPF('Por favor, tente novamente mais tarde.');
       });
   };
 
@@ -78,7 +78,6 @@ const EsqueciSenha = () => {
         value={senha}
         onChangeText={text => setSenha(text)}
         inputMode="keyboard"
-        secureTextEntry={true}
       />
       <TouchableOpacity onPress={() => informarCPF()}>
         <Text>Alterar</Text>

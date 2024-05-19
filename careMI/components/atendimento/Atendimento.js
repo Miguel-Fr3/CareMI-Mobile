@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native';
+import Error from '../../assets/images/error.png'
+import Erro from '../erro/Erro';
 
 const Atendimento = () => {
   const [atendimentos, setAtendimentos] = useState([]);
@@ -11,6 +13,7 @@ const Atendimento = () => {
   const [descricao, setDescricao] = useState('');
   const [dataEnvio, setDataEnvio] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [erro, setErro] = useState(false);
 
 
   const mostrarAtendimentos = () => {
@@ -23,9 +26,11 @@ const Atendimento = () => {
       })
       .then(data => {
         setAtendimentos(data);
+        setErro(false);
       })
       .catch(error => {
         console.error('Erro ao obter lista de atendimentos:', error);
+        setErro(true);
       });
   };
 
@@ -116,12 +121,15 @@ const Atendimento = () => {
 
   return (
     <View>
-      <Text>Atendimentos</Text>
-      <FlatList
-        data={atendimentos}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-      />
+      {erro ? (
+        <Erro/>
+      ) : (
+        <FlatList
+          data={atendimentos}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+        />
+      )}
 
       <Modal
         visible={modalVisible}

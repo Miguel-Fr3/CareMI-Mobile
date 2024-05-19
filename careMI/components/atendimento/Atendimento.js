@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native';
 import Error from '../../assets/images/error.png'
 import Erro from '../erro/Erro';
-
+import { style } from '../agendamento/style.js';
 const Atendimento = () => {
   const [atendimentos, setAtendimentos] = useState([]);
   const [atendimentoEditar, setAtendimentoEditar] = useState(null);
@@ -103,7 +103,8 @@ const Atendimento = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View>
+    <View style={{ width: '20rem', borderWidth: 2,  borderColor: 'black', borderRadius: 0,  borderStyle: 'solid', backgroundColor:"#fbfbfb"}}>
+      <Text style={{fontWeight: '600'}}>Atendimento</Text>
       <Text>Dias: {item.dias}</Text>
       <Text>Hábito: {item.habito}</Text>
       <Text>Sono: {item.tempoSono}</Text>
@@ -111,16 +112,16 @@ const Atendimento = () => {
       <Text>Descrição: {item.descricao}</Text>
       <Text>Data: {item.dataEnvio}</Text>
       <TouchableOpacity onPress={() => excluirAtendimento(item.id)}>
-        <Text>Excluir</Text>
+        <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem', color: 'red'}}>Excluir</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => mostrarAtendimentoPorId(item.id)}>
-        <Text>Editar</Text>
+        <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem'}}>Editar</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
-    <View>
+    <View style={{ flex: 1 , backgroundColor:"#fbfbfb"}}>
       {erro ? (
         <Erro/>
       ) : (
@@ -138,47 +139,64 @@ const Atendimento = () => {
         }}
       >
         <View>
-          <View>
-            <Text>Editar Atendimento</Text>
-            <Text>Dias</Text>
-            <TextInput
-              placeholder="Dias"
-              value={dias}
-              onChangeText={setDias}
-            />
-             <Text>Hábito</Text>
-            <TextInput
-              placeholder="Hábito"
-              value={habito}
-              onChangeText={setHabito}
-            />
-             <Text>Sono</Text>
-            <TextInput
-              placeholder="Sono"
-              value={tempoSono}
-              onChangeText={setTempoSono}
-            />
-            <Text>Hereditário</Text>
-            <TextInput
-              placeholder="Hereditário"
-              value={hereditario}
-              onChangeText={setHereditario}
-            />
+          <View style={style.container}>
+          
+            <Text style={{fontWeight: '600', marginTop: '1rem', fontSize: '2rem'}}>Editar Atendimento</Text>
+            <View style={style.inputLabel}>
+              <Text style={style.label}>Dias</Text>
+              <TextInput style={style.input}
+                placeholder="Dias"
+                value={dias}
+                onChangeText={setDias}
+              />
+            </View>
+            <View style={style.inputLabel}>
+              <Text  style={style.label}>Hábito</Text>
+              <TextInput style={style.input}
+                placeholder="Hábito"
+                value={habito}
+                onChangeText={setHabito}
+              />
+            </View>
+            <View style={style.inputLabel}>
+              <Text  style={style.label}>Sono</Text>
+              <TextInput style={style.input}
+                placeholder="Sono"
+                value={tempoSono}
+                onChangeText={setTempoSono}
+              />
+            </View>
 
-            <Text>Descrição</Text>
-            <TextInput
-              placeholder="Descrição"
-              value={descricao}
-              onChangeText={setDescricao}
-            />
-            <Text>Data</Text>
-            <TextInput
-              placeholder="Data"
-              value={dataEnvio}
-              onChangeText={setDataEnvio}
-            />
-             <TouchableOpacity onPress={atualizarAtendimento}>
-              <Text>Atualizar</Text>
+            <View style={style.inputLabel}>
+              <Text  style={style.label}>Hereditário</Text>
+              <TextInput style={style.input}
+                placeholder="Hereditário"
+                value={hereditario}
+                onChangeText={setHereditario}
+              />
+            </View>
+
+
+            <View style={style.inputLabel}>
+              <Text  style={style.label}>Descrição</Text>
+              <TextInput style={style.input}
+                placeholder="Descrição"
+                value={descricao}
+                onChangeText={setDescricao}
+              />
+            </View>
+
+            <View style={style.inputLabel}>
+              <Text  style={style.label}>Data</Text>
+              <TextInput style={style.input}
+                placeholder="Data"
+                value={dataEnvio}
+                onChangeText={setDataEnvio}
+              />
+            </View>
+
+             <TouchableOpacity style={style.button} onPress={atualizarAtendimento}>
+              <Text style={style.text}>Atualizar</Text>
             </TouchableOpacity>
           </View>
         </View>

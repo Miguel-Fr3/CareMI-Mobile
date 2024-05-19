@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import Sucesso from '../../assets/images/sucesso.png'
-import { style } from '../senha/style.js'
+import { style } from '../senha/style'
 
 const SucessoAgendamento = () => {
 

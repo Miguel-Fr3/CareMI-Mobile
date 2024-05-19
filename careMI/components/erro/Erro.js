@@ -9,7 +9,7 @@ const Erro = () => {
     return(
         <View style={style.errorContainer}>
             <Text style={style.errorTittle}>OOPS! não foi possível concluir sua solicitação</Text>
-            <Image source={Error} style={{ width: 100, height: 100 }} ></Image>
+            <Image source={Error} style={{ width: 200, height: 200 }} ></Image>
         </View>
     )
 

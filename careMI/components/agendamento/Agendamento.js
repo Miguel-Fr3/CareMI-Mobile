@@ -147,21 +147,21 @@ const Agendamento = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View>
+        <View style={style.container}>
           <SucessoAgendamento/>
 
-          <TouchableOpacity onPress={() => {
+          <TouchableOpacity style={style.buttonI} onPress={() => {
             navigation.navigate("Home");
             setModalVisible(false)
           }}>
-            <Text>Voltar para a tela inicial</Text>
+            <Text style={style.text}>Voltar para a tela inicial</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => {
+          <TouchableOpacity style={style.buttonA} onPress={() => {
             navigation.navigate("Atendimento");
             setModalVisible(false)
           }}>
-            <Text>Ir para meus atendimentos</Text>
+            <Text style={style.text}>Ir para meus atendimentos</Text>
           </TouchableOpacity>
 
         </View>

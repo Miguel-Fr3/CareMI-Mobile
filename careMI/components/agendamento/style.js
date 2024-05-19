@@ -51,15 +51,45 @@ export const style = StyleSheet.create({
     inputLabel: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        justifyContent: 'start',
+        alignItems: 'start',
     },
     text: {
         fontSize: '1rem',
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#fbfbfb',
-    }
+    },
+    buttonI: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '1rem',
+        backgroundColor: '#0E3535',
+        padding: '0.4rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: "center",
+        borderRadius: '16px',
+        marginTop: '3rem',
+        marginBottom: '8rem',
+        
+    },
+    buttonA: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '1rem',
+        backgroundColor: '#008080',
+        padding: '0.4rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: "center",
+        borderRadius: '16px',
+        marginTop: '3rem',
+        marginBottom: '8rem',
+        
+    },
 });
 
 

@@ -30,7 +30,7 @@ const Exames = () => {
   }, []);
 
   const renderItem = ({ item }) => (
-    <View style={{ width: '20rem', borderWidth: 2,  borderColor: 'black', borderRadius: 0,  borderStyle: 'solid', backgroundColor:"#fbfbfb"}}>
+    <View style={{ width: '20rem', marginBottom: '1rem', backgroundColor:"#fbfbfb"}}>
       <Text style={{fontWeight: '600'}}>Exame</Text>
       <Text>Data: {item.data}</Text>
       <Text>Hora: {item.hora}</Text>

@@ -22,7 +22,8 @@ export const style = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '13rem'
+        width: '13rem',
+        marginBottom: '1rem',
     },
     title: {
         fontSize: '2rem',

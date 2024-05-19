@@ -103,20 +103,25 @@ const Atendimento = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View style={{ width: '20rem', borderWidth: 2,  borderColor: 'black', borderRadius: 0,  borderStyle: 'solid', backgroundColor:"#fbfbfb"}}>
-      <Text style={{fontWeight: '600'}}>Atendimento</Text>
-      <Text>Dias: {item.dias}</Text>
-      <Text>Hábito: {item.habito}</Text>
-      <Text>Sono: {item.tempoSono}</Text>
-      <Text>Hereditário: {item.hereditario}</Text>
-      <Text>Descrição: {item.descricao}</Text>
-      <Text>Data: {item.dataEnvio}</Text>
-      <TouchableOpacity onPress={() => excluirAtendimento(item.id)}>
-        <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem', color: 'red'}}>Excluir</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => mostrarAtendimentoPorId(item.id)}>
-        <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem'}}>Editar</Text>
-      </TouchableOpacity>
+    <View style={{ width: '20rem', marginBottom: '1rem', backgroundColor:"#fbfbfb", display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View>
+        <Text style={{fontWeight: '600'}}>Atendimento</Text>
+        <Text>Dias: {item.dias}</Text>
+        <Text>Hábito: {item.habito}</Text>
+        <Text>Sono: {item.tempoSono}</Text>
+        <Text>Hereditário: {item.hereditario}</Text>
+        <Text>Descrição: {item.descricao}</Text>
+        <Text>Data: {item.dataEnvio}</Text>
+      </View>
+      <View>
+        <TouchableOpacity onPress={() => excluirAtendimento(item.id)}>
+          <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem', color: 'red'}}>Excluir</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => mostrarAtendimentoPorId(item.id)}>
+          <Text style={{fontWeight: '600', marginTop: '0.5rem', fontSize: '1rem'}}>Editar</Text>
+        </TouchableOpacity>
+      </View>
+
     </View>
   );
 

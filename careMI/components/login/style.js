@@ -32,7 +32,8 @@ export const style = StyleSheet.create({
         marginBottom: '0.5rem'
     },
     button: {
-        marginTop: '1rem',
+        marginTop: '2rem',
+        marginBottom: '1rem',
         backgroundColor: '#0e3535',
         padding: '0.2rem',
         display: 'flex',

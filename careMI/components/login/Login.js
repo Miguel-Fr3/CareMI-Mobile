@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity, Modal } from 'react-native';
 import { style } from './style';
+import EsqueciSenha from '../senha/EsqueciSenha';
 
 const Login = (props) => {
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
+  const [modalEsqueciSenhaVisible, setModalEsqueciSenhaVisible] = useState(false); 
 
+  const abrirModalEsqueciSenha = () => {
+    setModalEsqueciSenhaVisible(true);
+  };
+
+  const fecharModalEsqueciSenha = () => {
+    setModalEsqueciSenhaVisible(false);
+  };
+  
 
   return (
     <View style={style.container}>
@@ -27,12 +37,22 @@ const Login = (props) => {
         <Text style={{ color: '#fbfbfb', fontSize: "1rem", fontWeight: '600' }}>Entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+    
+      <TouchableOpacity onPress={abrirModalEsqueciSenha}>
         <Text style={{ color: '#fbfbfb', fontSize: "0.9rem", fontWeight: '600', marginTop: '1rem', textDecorationLine: 'underline' }}>
           Esqueci minha senha
         </Text>
       </TouchableOpacity>
 
+     
+      <Modal
+        visible={modalEsqueciSenhaVisible}
+        onRequestClose={fecharModalEsqueciSenha}
+      >
+        <View>
+          <EsqueciSenha  fecharModalEsqueciSenha={fecharModalEsqueciSenha}/>
+        </View>
+      </Modal>
     </View>
   )
 }

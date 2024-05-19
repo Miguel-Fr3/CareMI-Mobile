@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, TouchableOpacity,Text } from 'react-native';
 
 const Logoff = () => {
- 
   return (
     <View>
-      <Button title="Sair"/>
+      <TouchableOpacity>
+        <Text>Sair</Text>
+      </TouchableOpacity>
     </View>
   );
 };

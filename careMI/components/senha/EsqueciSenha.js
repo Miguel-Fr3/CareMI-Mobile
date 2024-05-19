@@ -7,7 +7,7 @@ const EsqueciSenha = () => {
   const [senha, setSenha] = useState('');
   const [erroCPF, setErroCPF] = useState('');
   const [modalSucessoVisible, setModalSucessoVisible] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const [id, setId] = useState(null);
 
   const informarCPF = () => {
     if (!cpf) {
@@ -22,7 +22,7 @@ const EsqueciSenha = () => {
         if (!loginEncontrado) {
           setErroCPF('CPF Inválido');
         } else {
-          setUserId(loginEncontrado.id);
+          setId(loginEncontrado.id);
           atualizarSenha(loginEncontrado.id);
         }
       })
@@ -40,8 +40,8 @@ const EsqueciSenha = () => {
     setModalSucessoVisible(false);
   };
 
-  const atualizarSenha = (userId) => {
-    fetch(`http://localhost:8080/logins/${userId}`, {
+  const atualizarSenha = (id) => {
+    fetch(`http://localhost:8080/logins/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

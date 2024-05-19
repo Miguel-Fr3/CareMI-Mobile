@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native';
 import SucessoSenha from './SucessoSenha';
+import { style } from './style';
 
 const EsqueciSenha = () => {
   const [cpf, setCPF] = useState('');
@@ -63,24 +64,32 @@ const EsqueciSenha = () => {
   };
 
   return (
-    <View>
-      <Text>CareMI</Text>
-      <Text>Esqueci minha senha?</Text>
-      <Text>Informe o número do CPF para criar uma nova senha</Text>
-      <TextInput
-        value={cpf}
-        onChangeText={text => setCPF(text)}
-        inputMode="numeric"
-      />
+    <View style={style.container}>
+      <Text style={style.title}>CareMI</Text>
+      <Text style={{ color: '#fbfbfb', fontSize: "0.9rem", fontWeight: '600', marginTop: '1rem', textDecorationLine: 'underline', marginBottom: '1rem' }}>Esqueci minha senha?</Text>
+      <View style={style.inputContainer}>
+        <Text style={style.text}>Informe o número do CPF para criar uma nova senha</Text>
+        <TextInput
+          style={style.input}
+          value={cpf}
+          onChangeText={text => setCPF(text)}
+          inputMode="numeric"
+        />
+      </View>
+
       {erroCPF ? <Text>{erroCPF}</Text> : null}
-      <Text>Informe a nova senha</Text>
-      <TextInput
-        value={senha}
-        onChangeText={text => setSenha(text)}
-        inputMode="keyboard"
-      />
-      <TouchableOpacity onPress={() => informarCPF()}>
-        <Text>Alterar</Text>
+      <View style={style.inputContainer}>
+        <Text style={style.text}>Informe a nova senha</Text>
+        <TextInput
+          style={style.input}
+          value={senha}
+          onChangeText={text => setSenha(text)}
+          inputMode="keyboard"
+        />
+      </View>
+
+      <TouchableOpacity style={style.button} onPress={() => informarCPF()}>
+        <Text style={{color: "#fbfbfb"}}>Alterar</Text>
       </TouchableOpacity>
       <Modal
         visible={modalSucessoVisible}
